@@ -90,4 +90,4 @@ ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point(
 
 ```
 ![sedenmin](https://user-images.githubusercontent.com/125687123/219888135-85100c20-3380-4d7a-98ff-49e55906d732.jpeg)
-![sedenmin]https://user-images.githubusercontent.com/125687123/219890444-e37bdb61-a0ee-4187-9d21-03cc1761d7b3.jpeg
+![file_show]https://user-images.githubusercontent.com/125687123/219890444-e37bdb61-a0ee-4187-9d21-03cc1761d7b3.jpeg
