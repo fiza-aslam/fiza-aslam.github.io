@@ -82,3 +82,9 @@ weight_log %>%
   select(WeightKg, WeightPounds, Fat, BMI, IsManualReport) %>%
   summary()
 ```
+![summary statistics2](https://user-images.githubusercontent.com/125687123/219881798-4e94d735-2fe6-4056-8f7d-09ece3ad3184.png)
+
+```
+#plotting relationship between steps taken and sedentary minutes 
+ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point()
+```
