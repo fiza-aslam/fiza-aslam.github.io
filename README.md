@@ -86,5 +86,6 @@ weight_log %>%
 
 ```
 #plotting relationship between steps taken and sedentary minutes 
-ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point()
+ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point(colour="purple", size=0.5)+geom_smooth(method="lm")
+
 ```
