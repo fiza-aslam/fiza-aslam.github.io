@@ -89,3 +89,4 @@ weight_log %>%
 ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point(colour="purple", size=0.5)+geom_smooth(method="lm")
 
 ```
+![sedenmin](https://user-images.githubusercontent.com/125687123/219888135-85100c20-3380-4d7a-98ff-49e55906d732.jpeg)
