@@ -10,7 +10,7 @@ This case study follows from the capstone project from the Google Data Analytics
 Bellabeat is a high tech manufacturer focused on health products for women. As of now, Bellabeat is a small company which would like to to grow in the smart device market. The CEO believes that analyzing smart device data will allow the company to exploit opportunities to grow in a market where technology is always evolving. Therefore, our team has been asked to analyze smart device data to see how consumers are using their smart devices, and to provide high level reconmendations for Bellabeats marketing strategy. 
 
 ## 1. Ask 
-Business Task: Analyze smart device useage data to see how consumers use non-Bellabeat products. Finalize insights into a report of analysis conducted and presentation on how Bellabeat should proceed with their products and marketing strategies. 
+Business Task: Analyze smart device usage data to see how consumers use non-Bellabeat products. Finalize insights into a report of analysis conducted and presentation on how Bellabeat should proceed with their products and marketing strategies. 
 
 Key stakeholders: women who use health products, Urska (CEO of Bellabeat), Sando (cofounder), executive team, Bellabeat marketing team, team of data analysts. 
 
@@ -104,9 +104,9 @@ Plotting weekday activity_data to see which days individuals use tracker the mos
 ```
 ggplot(activity_data, aes(x=Weekday, y=count)) +
   geom_bar(stat="identity",color="black",fill="purple") +
-  labs(title="Daily activity useage", x="Days", y="Count") 
+  labs(title="Daily activity usage", x="Days", y="Count") 
 ```
-![countdays2](https://user-images.githubusercontent.com/125687123/219950648-f32c95eb-0c19-4046-a13c-61588ba42476.jpeg)
+![countdays2](https://user-images.githubusercontent.com/125687123/219972431-055dec16-564d-49a0-9da6-460eb958291e.jpeg)
 
 Plotting relationship between steps taken and sedentary minutes.
 ``` 
@@ -157,7 +157,7 @@ ggplot(data=hourly_calories, aes(x=time, y= Calories)) +
 Findings from analysis stage will be shared and this is supported with visualizations created above. 
 ### Key Findings
 - Summary statistics show majority of individuals are lightly active and average daily step is 7638. This is less than the recomended number of steps individuals should take per day. 
-- Daily activity useage shows users record more data on Tuesday, Wednesday and Thursday. This shows an unequal distribution in the week and may be due to users not using their devices on weekends due to leisure time. Howvever, Monday is still lower so this could suggest a limitation to the dataset of missing data. 
+- Daily activity usage shows users record more data on Tuesday, Wednesday and Thursday. This shows an unequal distribution in the week and may be due to users not using their devices on weekends due to leisure time. Howvever, Monday is still lower so this could suggest a limitation to the dataset of missing data. 
 - Relationship between sedentary minutes and total steps is negative, as expected. 
 - Relationship between total daily steps and total daily calories is positive. 
 - Relationship between total time asleep and total time in bed is positive, suggesting individuals do not struggle much to fall asleep. Average time asleep is 6.98hours and average time in bed is 7.64hours. Piechart shows that a large amount of individuals, 54%, are not getting the recomended amount of sleep whilst 46% are. 
