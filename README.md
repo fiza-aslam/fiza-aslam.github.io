@@ -1,14 +1,16 @@
 # Bellabeat Case Study
 #### Author: Fiza Aslam
 #### Date: 18/02/2023
-#
+
+<img width="400" alt="bellabeatlogo big" src="https://user-images.githubusercontent.com/125687123/219961609-e96ff4b4-0d98-4248-baa8-f93d70ee7695.png">
+
 This case study follows from the capstone project from the Google Data Analytics Course. I will be using the 6 step data analysis process for this case study: Ask, Prepare, Process, Analyze, Share and Act. 
 
 ## Background
-Bellabeat is a high tech manufacturer focused on health products for women. As of now, Bellabeat is a small company which would like to to grow in the smart device market. The CEO believes that analyzing smart device data will allow the company to exploit opportunities to grow in a market where technology is always evolving. Therefore our team has been asked to analyze smart device data to see how consumers are using their smart devices aswell as providing high level reconmendations for Bellabeats marketing strategy. From this analysis, Bellabeat will have greater insights on how to improve their services aswell as their marketing strategy.
+Bellabeat is a high tech manufacturer focused on health products for women. As of now, Bellabeat is a small company which would like to to grow in the smart device market. The CEO believes that analyzing smart device data will allow the company to exploit opportunities to grow in a market where technology is always evolving. Therefore, our team has been asked to analyze smart device data to see how consumers are using their smart devices, and to provide high level reconmendations for Bellabeats marketing strategy. 
 
 ## 1. Ask 
-Business Task: Analyze smart device useage data provided by Bellabeat to see how consumers use non-Bellabeat smart devices. Finalize insights into a report and presentation on how Bellabeat should proceed with their products and marketing strategies. 
+Business Task: Analyze smart device useage data to see how consumers use non-Bellabeat products. Finalize insights into a report of analysis conducted and presentation on how Bellabeat should proceed with their products and marketing strategies. 
 
 Key stakeholders: women who use health products, Urska (CEO of Bellabeat), Sando (cofounder), executive team, bellabeat marketing team, team of data analysts. 
 
@@ -39,8 +41,8 @@ Data cleaning process for each dataset:
  
 Datamapping: In analysis stage, we need to ensure datasets are compatible so they datasets can be merged for analysis. By using text to column, we ensured headings (consistent naming conventions) and cell format were identical to all other datasets. Also by formatting all date columns in each dataset to ‘date’ ensures compatibility.  
 
-## 4. Analyze
-Cleaned dataset from excel has been imported and now ready for analysis. Daily activity and sleep datasets will be merged for further analysis. 
+## 4. Analyze 
+Cleaned dataset from excel has been imported and now ready for analysis. Will also combine analyze stage with share stage as visualizations were created during analysis. 
 
 Creating dataframes.
 ```
@@ -136,4 +138,39 @@ daily_activity_with_sleep %>%
 ```
 From absolute values, proportion of individuals are taken and piechart is constructed on excel. 
 
-  
+![less than 420](https://user-images.githubusercontent.com/125687123/219883029-73365026-af2c-4161-bbaf-32c620412134.png)
+![greater than 520](https://user-images.githubusercontent.com/125687123/219883054-f5870334-7ec4-460c-8482-25580c5522cf.png)
+
+![piechart6](https://user-images.githubusercontent.com/125687123/219954087-5b599d53-6816-4031-9ca6-6ad01a2acb3a.jpg)
+
+Plotting hourly calories burnt
+```
+ggplot(data=hourly_calories, aes(x=time, y= Calories)) + 
+  geom_histogram(stat = "identity", fill="purple") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(title="Average calories burnt by the hour", x="Time", y="Calories")
+```
+![calhours](https://user-images.githubusercontent.com/125687123/219955148-16832cc6-c1cc-4917-b85d-4b39b80fea20.jpeg)
+
+## 5. Share
+Findings from analysis stage will be shared and this is supported with visualizations created above. 
+### Key Findings
+- Summary statistics show majority of individuals are lightly active and average daily step is 7638. This is less than the recomended number of steps individuals should take per day. 
+- Daily activity useage shows users record more data on Tuesday, Wednesday and Thursday. This shows an unequal distribution in the week and may be due to users not using their devices on weekends due to leisure time. Howvever, Monday is still lower so this could suggest a limitation to the dataset of missing data. 
+- Relationship between sedentary minutes and total steps is negative, as expected. 
+- Relationship between total daily steps and total daily calories is positive. 
+- The relationship between total time asleep and total time in bed is positive, suggesting individuals do not struggle much to fall asleep. Average time asleep is 6.98hours and average time in bed is 7.64hours. Piechart shows that a large amount of individuals, 54%, are not getting the recomended amount of sleep whilst 46% are. 
+- Most calories are burnt in the evening from 17:00 to 19:00. This could be due to individuals going to the gym/excersing after work as they are likely to be sedentary during work hours. 
+
+## 6. Act 
+Findings will be acted on by creating a presentation to stakeholders summarizing the analysis. From these findings, high-level recomendations will be made on how Bellabeat should go forward in improving their marketing strategy. 
+
+### Recommendations
+- Encourage individuals to increase daily steps to burn more calories. Implemenet a 'daily step goal' and notify users when they have completed it with encouraging messages. 
+- Notify individuals on days where they did not get their recomended number of hours of sleep and encourage them to do so. 
+- A feauture which includes ways on how individuals can be more active by suggesting HIIT workouts, different types of excercise. A notification can be enabled if individual has been sedentary for too long. 
+- Implement a 'add freinds' feature where they can compare activity levels, steps and calorie burn for friendly competition.   
+- As individuals are mostly active during 5-7pm, Bellabeat can create 'evening workout routines for the gym/home.'
+
+
+Importantly, for the above recomendations to be made, Bellabeat should invest alot into their technology of data science in developing their algorithms.  As technologic advancements are accelearting in the economy today, by investing in their technology to improve their services, Bellabeat will stay ahead of competitors. Therefore, they should also promote their product by use of social media. 
