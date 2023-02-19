@@ -42,7 +42,7 @@ Datamapping: In analysis stage, we need to ensure datasets are compatible so the
 ## 4. Analyze
 Cleaned dataset from excel has been imported and now ready for analysis. Daily activity and sleep datasets will be merged for further analysis. 
 
-Firstly, dataframes will be created.
+Creating dataframes.
 ```
 daily_activity <- read.csv("dailyActivity_merged.csv")
 sleep_day <- read.csv("sleepDay_merged.csv")
@@ -51,7 +51,7 @@ hourly_intensities2 <- read.csv("hourlyIntensities_merged.csv")
 hourly_steps <- read.csv("hourlySteps_merged.csv")
 weight_log <- read.csv("weightLogInfo_merged.csv")
 ```
-Merging daily activity dataset with sleep dataset
+Merging daily activity dataset with sleep dataset.
 ```
 daily_activity_with_sleep <- merge(sleep_day, daily_activity, by="Id")
 daily_activity_with_weight <- merge(weight_log, daily_activity, by="Id")
@@ -88,13 +88,52 @@ weight_log %>%
 ```
 ![summary statistics2](https://user-images.githubusercontent.com/125687123/219881798-4e94d735-2fe6-4056-8f7d-09ece3ad3184.png)
 
-Plotting relationship between steps taken and sedentary minutes
+Converting activity date to weekdays
+```
+daily_activity <- daily_activity %>% mutate( Weekday = weekdays(as.Date(ActivityDate, "%m/%d/%Y")))
+daily_activity$weekday1 <- ordered(daily_activity$Weekday, levels=c("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"))
+activity_data <- daily_activity %>% 
+  group_by(Weekday) %>% 
+  summarize(count = n())  
+```
+
+Plotting weekday activity_data to see which days individuals use tracker the most. 
+```
+ggplot(activity_data, aes(x=Weekday, y=count)) +
+  geom_bar(stat="identity",color="black",fill="purple") +
+  labs(title="Daily activity useage", x="Days", y="Count") 
+```
+![countdays2](https://user-images.githubusercontent.com/125687123/219950648-f32c95eb-0c19-4046-a13c-61588ba42476.jpeg)
+
+Plotting relationship between steps taken and sedentary minutes.
 ``` 
 ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point(colour="purple", size=0.5)+geom_smooth(method="lm")
 
 ```
-![sedenmin](https://user-images.githubusercontent.com/125687123/219888135-85100c20-3380-4d7a-98ff-49e55906d732.jpeg)
 ![file_show](https://user-images.githubusercontent.com/125687123/219890444-e37bdb61-a0ee-4187-9d21-03cc1761d7b3.jpeg)
 
-
+Plotting relationship between total steps taken and calories burnt.
 ```
+ggplot(data=daily_activity, aes(x=TotalSteps, y=Calories))+geom_point(color="purple", size=0.5)+ labs(title="Relationship between total steps and calories burnt", x= "Total Steps", y = "Calories")+ geom_smooth(method = 'loess', formula= 'y ~ x')
+```
+![stepscal](https://user-images.githubusercontent.com/125687123/219950891-b29d50c9-9387-40e5-b387-ecd9a06f5f51.jpeg)
+
+Plotting relationship between total minutes asleep and total time in bed. 
+```
+ggplot(data=sleep_day, aes(x=TotalMinutesAsleep, y=TotalTimeInBed)) +
+  geom_point(colour="purple", size=0.5) +
+  labs(title="Relationship between time asleep and time in bed",x="Time Asleep",y="Time in Bed") +
+  geom_smooth(method="lm") 
+```
+![sleepbed2](https://user-images.githubusercontent.com/125687123/219951065-2d9d8a3d-8d5b-4574-b48a-ee8927bffb1a.jpeg)
+
+Finding the absolute number of people are getting their recomended number of hours of sleep (7-9hours, 420-540min). 
+```
+daily_activity_with_sleep %>%
+  count(TotalMinutesAsleep < 420)
+daily_activity_with_sleep %>%
+  count(TotalMinutesAsleep > 540)
+```
+From absolute values, proportion of individuals are taken and piechart is constructed on excel. 
+
+  
