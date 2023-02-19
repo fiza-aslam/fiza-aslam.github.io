@@ -30,7 +30,7 @@ Dataset is under CC0: public Domain lisecnce which means creator has copyright l
 
 ## 3. Process
 Tools that will be used: Excel for data cleaning and Rstudio for analysis and creating visualizations. 
-To ensure for data integrity, limitations of datasets will be accounted for by using excel to clean the data. The cleaned dataset overcomes he limitations and hence contributes to the overall accuracy, completeness and consistency of the data. 
+To ensure for data integrity, limitations of datasets will be accounted for by using excel to clean the data. The cleaned dataset overcomes the limitations and hence contributes to the overall accuracy, completeness and consistency of the data. 
 
 Data cleaning process for each dataset: 
 - Weight log: As stated before, data has 33 individuals studied. However, for Weight data, only 8 of them are included. This small sample size can bias our results. Used the text to column function to split date and time into separate columns. 
