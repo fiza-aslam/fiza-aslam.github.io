@@ -42,8 +42,8 @@ Datamapping: In analysis stage, we need to ensure datasets are compatible so the
 ## 4. Analyze
 Cleaned dataset from excel has been imported and now ready for analysis. Daily activity and sleep datasets will be merged for further analysis. 
 
+Firstly, dataframes will be created.
 ```
-#create dataframes
 daily_activity <- read.csv("dailyActivity_merged.csv")
 sleep_day <- read.csv("sleepDay_merged.csv")
 hourly_calories <- read.csv("hourlyCalories_merged.csv")
@@ -51,9 +51,13 @@ hourly_intensities2 <- read.csv("hourlyIntensities_merged.csv")
 hourly_steps <- read.csv("hourlySteps_merged.csv")
 weight_log <- read.csv("weightLogInfo_merged.csv")
 ```
-
+Merging daily activity dataset with sleep dataset
 ```
-#create summary statistics
+daily_activity_with_sleep <- merge(sleep_day, daily_activity, by="Id")
+daily_activity_with_weight <- merge(weight_log, daily_activity, by="Id")
+```
+Creating summary statistics
+```
 daily_activity %>%  
   select(TotalSteps,
          TotalDistance,
@@ -84,10 +88,13 @@ weight_log %>%
 ```
 ![summary statistics2](https://user-images.githubusercontent.com/125687123/219881798-4e94d735-2fe6-4056-8f7d-09ece3ad3184.png)
 
-```
-#plotting relationship between steps taken and sedentary minutes 
+Plotting relationship between steps taken and sedentary minutes
+``` 
 ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point(colour="purple", size=0.5)+geom_smooth(method="lm")
 
 ```
 ![sedenmin](https://user-images.githubusercontent.com/125687123/219888135-85100c20-3380-4d7a-98ff-49e55906d732.jpeg)
 ![file_show](https://user-images.githubusercontent.com/125687123/219890444-e37bdb61-a0ee-4187-9d21-03cc1761d7b3.jpeg)
+
+
+```
